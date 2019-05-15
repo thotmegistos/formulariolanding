@@ -37,8 +37,8 @@
 </head>
 <body onLoad="setTimeout('delayedRedirect()', 8000)" style="background-color:#fff;">
 <?php
-						$mail = $_POST['email'];
-						$to = "kbarreiro@hexamedia.co";/* YOUR EMAIL HERE */
+						/**$mail = $_POST['email'];
+						$to = "kbarreiro@hexamedia.co";
 						$subject = "Actualización y registro de datos | Expreso Palmira";
 						$headers = "From:Expreso Palmira Pruebas <noreply@yourdomain.com>";
 						$message = "Información Formulario\n";
@@ -60,11 +60,26 @@
 						$user = "$mail";
 						$usersubject = "Thank You";
 						$userheaders = "From: info@mavia.com\n";
-						/*$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITH OUT SUMMARY*/
-						//Confirmation page WITH  SUMMARY
+						$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITH OUT SUMMARY
+						Confirmation page WITH  SUMMARY
 						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
-						mail($user,$usersubject,$usermessage,$userheaders);
-	
+						mail($user,$usersubject,$usermessage,$userheaders);**/
+						$email = $_POST['email'];
+						$nombres = $_POST['firstname'];
+						$apellidos = $_POST['lastname'];
+						$tipo_document = $_POST['tdocumento'];
+						$documento = $_POST['numerod'];
+						$fecha_nac = $_POST['age'];
+						$genero = $_POST['gender'];
+						$email = $_POST['email'];
+						$telefono = $_POST['telephone'];
+						$direccion = $_POST['direccion'];
+
+						$wsdl = "http://190.85.141.28:6161/WSExpal/Expal?wsdl";
+						$params = $tipo_document.';'.$documento.';'.$genero.';'.$nombres.';'.$apellidos.';'.$fecha_nac.';'.$email.';'.$telefono.';'.$direccion;
+						$request = array("parametros" => $params);
+						$cliente = new SoapClient($wsdl);
+						$response = $cliente->__call('crmClienteUltra', array("parameters" => $request));
 ?>
 <!-- END SEND MAIL SCRIPT -->   
 
