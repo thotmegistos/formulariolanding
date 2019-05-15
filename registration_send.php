@@ -74,9 +74,10 @@
 						$email = $_POST['email'];
 						$telefono = $_POST['telephone'];
 						$direccion = $_POST['direccion'];
+						$term = $_POST['terms'];
 
 						$wsdl = "http://190.85.141.28:6161/WSExpal/Expal?wsdl";
-						$params = $tipo_document.';'.$documento.';'.$genero.';'.$nombres.';'.$apellidos.';'.$fecha_nac.';'.$email.';'.$telefono.';'.$direccion;
+						$params = $tipo_document.';'.$documento.';'.$genero.';'.$nombres.';'.$apellidos.';'.$fecha_nac.';'.$email.';'.$telefono.';'.$direccion.';'.$term;
 						$request = array("parametros" => $params);
 						$cliente = new SoapClient($wsdl);
 						$response = $cliente->__call('crmClienteUltra', array("parameters" => $request));
