@@ -64,6 +64,7 @@
 						Confirmation page WITH  SUMMARY
 						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
 						mail($user,$usersubject,$usermessage,$userheaders);**/
+						
 						$email = $_POST['email'];
 						$nombres = $_POST['firstname'];
 						$apellidos = $_POST['lastname'];
